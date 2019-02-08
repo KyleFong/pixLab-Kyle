@@ -13,7 +13,7 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  * 
  * @author Barbara Ericson ericson@cc.gatech.edu
  */
-public class Picture extends SimplePicture 
+public class Picture extends SimplePicture
 {
   ///////////////////// constructors //////////////////////////////////
   
@@ -97,6 +97,38 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void Blue() {
+    Pixel[][]pixels = this.getPixels2D();
+    for(Pixel[] rowArray: pixels) {
+      for(Pixel pixelObj : rowArray) {
+        pixelObj.setBlue(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  public void negate() {
+    Pixel[][]pixels = this.getPixels2D();
+    for(Pixel[] rowArray: pixels) {
+      for(Pixel pixelObj : rowArray) {
+        pixelObj.setRed(255-pixelObj.getRed());
+        pixelObj.setBlue(255-pixelObj.getBlue());
+        pixelObj.setGreen(255-pixelObj.getGreen());
+      }
+    }
+  }
+  public void greyscale() {
+    Pixel[][]pixels = this.getPixels2D();
+    for(Pixel[] rowArray: pixels) {
+      for(Pixel pixelObj : rowArray) {
+        int sum = pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen();
+        int average = sum/3;
+        pixelObj.setRed(average);
+        pixelObj.setBlue(average);
+        pixelObj.setGreen(average);
+      }
+    }
+  }
+
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -223,9 +255,12 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("images/water.jpg");
     beach.explore();
-    beach.zeroBlue();
+    //beach.zeroBlue();
+    //beach.Blue();
+    beach.negate();
+    //beach.greyscale();
     beach.explore();
   }
   
