@@ -28,7 +28,7 @@ public class PictureTester
     caterpillar.mirrorVertical();
     caterpillar.explore();
   }
-  
+
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -53,7 +53,25 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
-  
+
+  public static void testMirrorVerticalRighttoLeft() {
+    Picture motorcycle = new Picture("images/redMotorcycle.jpg");
+    motorcycle.mirrorVerticalRighttoLeft();
+    motorcycle.explore();
+  }
+
+  public static void testHorizontal() {
+    Picture motorcycle = new Picture("images/redMotorcycle.jpg");
+    motorcycle.mirrorHorizontal();
+    motorcycle.explore();
+  }
+
+  public static void testHorizontalBotToTop() {
+    Picture motorcycle = new Picture("images/redMotorcycle.jpg");
+    motorcycle.mirrorHorizontalBotToTop();
+    motorcycle.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -61,7 +79,10 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testMirrorVerticalRighttoLeft();
+    //testHorizontal();
+    testHorizontalBotToTop();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
