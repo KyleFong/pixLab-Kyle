@@ -1,3 +1,4 @@
+//package com.gradescope.pixlab;
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -6,6 +7,9 @@
  * 
  * @author Barbara Ericson 
  */
+
+
+
 public class PictureTester
 {
   /** Method to test zeroBlue */
@@ -32,10 +36,12 @@ public class PictureTester
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
-    Picture temple = new Picture("temple.jpg");
+    Picture temple = new Picture("images/temple.jpg");
     temple.explore();
-    temple.mirrorTemple();
+    int count = temple.mirrorTemple(0);
+    System.out.println(count);
     temple.explore();
+//    System.out.println(count);
   }
   
   /** Method to test the collage method */
@@ -72,6 +78,18 @@ public class PictureTester
     motorcycle.explore();
   }
 
+  public static void testMirrorArms() {
+    Picture snowman = new Picture("images/snowman.jpg");
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+
+  public static void testMirrorGull() {
+    Picture seagull = new Picture("images/seagull.jpg");
+    seagull.mirrorGull();
+    seagull.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -79,9 +97,11 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+    testMirrorGull();
+    //testMirrorArms();
     //testMirrorVerticalRighttoLeft();
     //testHorizontal();
-    testHorizontalBotToTop();
+    //testHorizontalBotToTop();
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();

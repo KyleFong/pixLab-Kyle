@@ -1,3 +1,4 @@
+package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -5,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+
 
 /**
  * A class that represents a picture.  This class inherits from 
@@ -150,6 +152,10 @@ public class Picture extends SimplePicture
     } 
   }
 
+  //challenge
+  public void mirrorDiagonal() {
+
+  }
 
   public void mirrorVerticalRighttoLeft()
   {
@@ -198,14 +204,66 @@ public class Picture extends SimplePicture
     }
   }
 
+  public void mirrorArms() {
+    int mirrorPoint = 193;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    // Left arm
+    for (int row = 158; row < mirrorPoint; row++) {
+      // loop from 13 to just before the mirror point
+      for (int col = 103; col < 170; col++) {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+    int mirrorPoint2 = 193;
+    Pixel topPixel2 = null;
+    Pixel bottomPixel2 = null;
+
+    // Right arm
+    for (int row = 171; row < mirrorPoint2; row++)
+    {
+
+      for (int col = 239; col < 294; col++)
+      {
+        topPixel2 = pixels[row][col];
+        bottomPixel2 = pixels[mirrorPoint2 - row + mirrorPoint2][col];
+        bottomPixel2.setColor(topPixel2.getColor());
+      }
+    }
+  }
+
+  public void mirrorGull()
+  {
+    int mirrorPoint = 345;
+    Pixel rightPixel = null;
+    Pixel leftPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    // Seagull
+    for (int row = 235; row < 323; row++)
+    {
+      for (int col = 238; col < mirrorPoint; col++)
+      {
+        rightPixel = pixels[row][col];
+        leftPixel = pixels[row][mirrorPoint - col + mirrorPoint/3];
+        leftPixel.setColor(rightPixel.getColor());
+      }
+    }
+  }
+
+
 
   /** Mirror just part of a picture of a temple */
-  public void mirrorTemple()
+  public int mirrorTemple(int count)
   {
     int mirrorPoint = 276;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
+    count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     // loop through the rows
@@ -219,8 +277,10 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    return count;
   }
   
   /** copy from the passed fromPic to the
@@ -297,6 +357,7 @@ public class Picture extends SimplePicture
       }
     }
   }
+
 
   
   
