@@ -23,7 +23,13 @@ public class PictureTester
     // uncomment this in repl.it to test your code!!
     // beach.write("imagesOutput/beach.jpg");
   }
-  
+
+  public static void testFixUnderwater() {
+    Picture water = new Picture("images/water.jpg");
+    water.fixUnderwater();
+    water.explore();
+  }
+
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -47,22 +53,28 @@ public class PictureTester
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture(640, 480);
     canvas.createCollage();
     canvas.explore();
   }
+
+//  public static void testFromPic() {
+//    Picture canvas = new Picture(640, 480);
+//    canvas.fromPic(0, 0 ,0 ,0 );
+//    canvas.explore();
+//  }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
+    Picture swan = new Picture("images/swan.jpg");
     swan.edgeDetection(10);
     swan.explore();
   }
 
-  public static void testMirrorVerticalRighttoLeft() {
+  public static void testMirrorVerticalRightToLeft() {
     Picture motorcycle = new Picture("images/redMotorcycle.jpg");
-    motorcycle.mirrorVerticalRighttoLeft();
+    motorcycle.mirrorVerticalRightToLeft();
     motorcycle.explore();
   }
 
@@ -90,6 +102,26 @@ public class PictureTester
     seagull.explore();
   }
 
+  public static void testCopy() {
+    Picture canvas = new Picture(640, 480);
+    Picture snowman = new Picture("images/snowman.jpg");
+    canvas.copy(snowman, 0, 0);
+    canvas.explore();
+  }
+
+  public static void testCopy2() {
+    Picture canvas = new Picture("images/640x480.jpg");
+    Picture snowman = new Picture("images/snowman.jpg");
+    canvas.copy2(snowman, 0, 0, 300, 300);
+    canvas.explore();
+  }
+
+  public static void testMyCollage() {
+    Picture canvas = new Picture("images/640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -97,11 +129,15 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testMirrorGull();
+    //testMyCollage();
+    //testCopy2();
+    //testFromPic();
+    //testMirrorGull();
     //testMirrorArms();
-    //testMirrorVerticalRighttoLeft();
+    //testMirrorVerticalRightToLeft();
     //testHorizontal();
     //testHorizontalBotToTop();
+    //testFixUnderwater();
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
@@ -116,7 +152,7 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    //testEdgeDetection();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
