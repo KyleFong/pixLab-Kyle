@@ -72,6 +72,13 @@ public class PictureTester
     swan.explore();
   }
 
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("images/swan.jpg");
+    swan.edgeDetection2(10);
+    swan.explore();
+  }
+
   public static void testMirrorVerticalRightToLeft() {
     Picture motorcycle = new Picture("images/redMotorcycle.jpg");
     motorcycle.mirrorVerticalRightToLeft();
@@ -152,8 +159,8 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    testEdgeDetection();
-    //testEdgeDetection2();
+    //testEdgeDetection();
+    testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
